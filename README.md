@@ -5,7 +5,7 @@ The goal of this blog is to setup a Grafana dashboard using the SiriDB plugin. [
 For an attractive dashboard we need some data which we can visualize.
 In this tutorial we use a Python script that collects some cpu, disk and memory data from the localhost and some information about the running SiriDB processes. All this data will be stored in a SiriDB database and by using a Grafana Dashboard we are able to monitor the data.
 
-We use a fresh Ubnutu 19.20 (desktop) installation so you might want to skip some steps or change some commands according to your operating system.
+We use a fresh Ubuntu 19.10 (desktop) installation so you might want to skip some steps or change some commands according to your operating system.
 
 Update and install Git, Pip and libuv1 by using apt.
 ```
@@ -31,7 +31,7 @@ We don't require SiriDB to start at startup so we disable the service:
 sudo systemctl disable siridb-server.service
 ```
 
-Since version 2.0.35 it is possible to use the HTTP API to create and manage databases. It is also possible to use the [admin tool](https://github.com/SiriDB/siridb-admin) for creating and managing databases.
+Since version 2.0.35 it is possible to use the HTTP API to create and manage databases. However it is also possible to use the [admin tool](https://github.com/SiriDB/siridb-admin) for this.
 
 There are several native clients available for communicating with SiriDB, for Grafana we will use SiriDB HTTP which
 provides a HTTP(S) API.
@@ -69,7 +69,7 @@ for i in {0..3}; do siridb-server -c siridb$i.conf > siridb$i.log & done
 > Hint: you can view the output from a SiriDB process by using for example `cat siridb0.log` or `tail -f siridb0.log`.
 
 Now we use the SiriDB HTTP API to create the actual database. SiriDB has a default service account `sa` with password `siri` which we will use.
-For our tutorial we will only need a database with `second` precision so we add the `-t` flag. We also select a shard duration of 6 hours for this database because our measurement interval will only be a few seconds. Sometimes you might want to store one value per measurement in each hour or even per day in which case your database will perform better by using a larger shard duration.
+For our tutorial we will only need a database with `second` precision. We also select a shard duration of 6 hours for this database because our measurement interval will only be a few seconds. Sometimes you might want to store one value per measurement in each hour or even per day in which case your database will perform better by using a larger shard duration.
 
 Create the database on the first SiriDB server which is running on port `9000` using curl with basic authentication:
 
@@ -185,7 +185,7 @@ In the next window you should choose the SiriDB HTTP data source.
 
 ![Grafana import dashboard](/png/grafana-import-dashboard.png?raw=true)
 
-After clicking on ***Import*** you shout see a dashboard similar to this:
+After clicking on ***Import*** you should see a dashboard similar to this:
 
 ![Grafana tutorial dashboard](/png/grafana-tutorial-dashboard.png?raw=true&v=1)
 

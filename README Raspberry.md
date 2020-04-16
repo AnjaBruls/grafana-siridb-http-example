@@ -127,9 +127,9 @@ Ok, everything is ready to collect data (we configure the other two SiriDB serve
 pip install siridb-connector psutil
 ```
 
-Start the script. The script accepts arguments which can be viewed with `python3 mon2siridb.py -h`. If you are following this tutorial then the defaults should be fine.
+Start the script. The script accepts arguments which can be viewed with `python mon2siridb.py -h`. If you are following this tutorial then the defaults should be fine.
 ```
-python3 mon2siridb.py &> mon.log &
+python mon2siridb.py &> mon.log &
 ```
 
 Let's setup Grafana so we can view what we are collecting. First download and install Grafana:

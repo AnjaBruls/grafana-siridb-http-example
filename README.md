@@ -267,7 +267,7 @@ At ***select*** fill in ``` `disk_io_counters_read_bytes` ```, choose ***max*** 
 
 On the General tab you can change the panel title to "Disk IO counters (read bytes)".
 
-![Grafana graph](/png/grafana-panel-add-title.png?raw=true&v=1)
+![Grafana graph](/png/grafana-add-panel-add-title.png?raw=true&v=1)
 
 Repeat these steps for the ***write*** counters and when you are finished you should have the following result:
 

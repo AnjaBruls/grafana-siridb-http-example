@@ -22,8 +22,8 @@ cd ./grafana-siridb-http-example
 
 Next we install SiriDB:
 ```
-wget https://github.com/SiriDB/siridb-server/releases/download/2.0.36/siridb-server_2.0.36_amd64.deb
-sudo dpkg -i siridb-server_2.0.36_amd64.deb
+wget https://github.com/SiriDB/siridb-server/releases/download/2.0.36/siridb-server_2.0.36-0.tt1_amd64.deb
+sudo dpkg -i siridb-server_2.0.36-0.tt1_amd64.deb
 ```
 
 We don't require SiriDB to start at startup so we disable the service:

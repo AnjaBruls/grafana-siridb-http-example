@@ -40,9 +40,7 @@ make
 sudo cp siridb-server /usr/local/bin/siridb-server
 ```
 
-Since version 2.0.35 it is possible to use the HTTP API to create and manage databases. However it is also possible to use the [admin tool](https://github.com/SiriDB/siridb-admin) for this.
-
-There are several native clients available for communicating with SiriDB but for Grafana we will use the HTTP API.
+Since 2.0.36 it is possible to use a build-in HTTP API for connecting with Grafana. The same API can also be used to create and manage databases. However, it is also possible to use [SiriDB-http](https://github.com/SiriDB/siridb-http) and [SiriDB-admin](https://github.com/SiriDB/siridb-admin). Both tools are required with older versions of SiriDB.
 
 SiriDB can scale data across multiple pools and each pool can have two servers for redundancy. We can play with this
 concept on a single host by running SiriDB multiple times using different ports. In a real scenario you should use
@@ -222,8 +220,7 @@ curl --location --request POST 'http://localhost:9020/query/tutorialdb' \
 --header 'Authorization: Basic aXJpczpzaXJp' \
 --header 'Content-Type: text/plain' \
 --data-raw '{
-	"q": "create group `disk_io_counters_read_bytes` for /.*disk_io_counters_read_bytes/",
-	"t": "ms"
+	"q": "create group `disk_io_counters_read_bytes` for /.*disk_io_counters_read_bytes/"
 }'
 ```
 **`disk_io_counters_write_bytes`**
@@ -233,8 +230,7 @@ curl --location --request POST 'http://localhost:9020/query/tutorialdb' \
 --header 'Authorization: Basic aXJpczpzaXJp' \
 --header 'Content-Type: text/plain' \
 --data-raw '{
-	"q": "create group `disk_io_counters_write_bytes` for /.*disk_io_counters_write_bytes/",
-	"t": "ms"
+	"q": "create group `disk_io_counters_write_bytes` for /.*disk_io_counters_write_bytes/"
 }'
 ```
 
